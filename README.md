@@ -5,7 +5,7 @@
 [![Crate](https://img.shields.io/crates/v/getrandom.svg)](https://crates.io/crates/getrandom)
 [![Documentation](https://docs.rs/getrandom/badge.svg)](https://docs.rs/getrandom)
 [![Dependency status](https://deps.rs/repo/github/rust-random/getrandom/status.svg)](https://deps.rs/repo/github/rust-random/getrandom)
-
+![rsgx](https://github.com/sammyne/getrandom/workflows/rsgx/badge.svg?branch=rsgx1.1.2)
 
 A Rust library for retrieving random data from (operating) system source. It is
 assumed that system always provides high-quality cryptographically secure random

@@ -60,6 +60,17 @@ impl Error {
     }
 }
 
+mod libc {
+    pub use libc::c_char;
+
+    use libc::{c_int, size_t};
+
+    #[link(name = "sgx_tstdc")]
+    extern "C" {
+        pub fn strerror_r(errnum: c_int, buf: *mut c_char, buflen: size_t) -> c_int;
+    }
+}
+
 cfg_if! {
     if #[cfg(unix)] {
         fn os_err(errno: i32, buf: &mut [u8]) -> Option<&str> {
@@ -164,8 +175,11 @@ fn internal_desc(error: Error) -> Option<&'static str> {
     }
 }
 
-#[cfg(test)]
+#[cfg(feature = "with-testing")]
 mod tests {
+    use std::prelude::v1::*;
+    use testing::test;
+
     use super::Error;
     use core::mem::size_of;
 
